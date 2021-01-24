@@ -1,0 +1,21 @@
+{
+  "name": "cominfo-client",
+  "version": "1.0.0",
+  "main": "app.js",
+  "bin": "app.js",
+  "repository": "https://github.com/Team-IF/ComInFo-Client.git",
+  "author": "Team IF <postmaster@teamif.io>",
+  "license": "AGPL-3.0-or-later",
+  "scripts": {
+    "build": "pkg . --targets linux-x64,win-x86,macos-x64 --out-path dist"
+  },
+  "dependencies": {
+    "@jedithepro/system-info": "^3.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "os": "^0.1.1"
+  },
+  "devDependencies": {
+    "pkg": "^4.4.9"
+  }
+}

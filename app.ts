@@ -1,14 +1,12 @@
 const PORT = 18382
-const express = require('express')
+import express from 'express'
 const app = express()
-const cors = require('cors')()
-const os = require('os')
+import cors from 'cors'
+import os from 'os'
 // const gpuInfo = require('gpu-info')
-const gpuInfo = require('@jedithepro/system-info')
+import gpuInfo from '@jedithepro/system-info'
 
 let cpuName = os.cpus()
-// let _Gpu = []
-let gpuName = []
 
 const info = {
     hostname: os.hostname(),
@@ -17,7 +15,7 @@ const info = {
     cpu: cpuName[0].model,
     ram: Math.floor(os.totalmem()),
     uptime: Math.floor(os.uptime()/60),
-    
+    gpu: ""
 }
 
 app.use(cors)

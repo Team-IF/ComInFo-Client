@@ -18,7 +18,7 @@ const info = {
     gpu: ""
 }
 
-app.use(cors)
+app.use(cors())
 
 app.get('/', (_, res) => {
     // gpuInfo().then(data => { _Gpu = data

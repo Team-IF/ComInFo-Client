@@ -20,21 +20,17 @@ const info = {
 
 app.use(cors())
 
-app.get('/', (_, res) => {
+app.get('/', async (_, res) => {
     // gpuInfo().then(data => { _Gpu = data
     //     info.gpu = _Gpu.map(x => x.Name).join('\n')
     //     res.send(info)
     // })
-
-    gpuInfo.graphics().then(data => {
-        // console.log(_Gpu.controllers.map(x => x.model).join('\n'))
-        info.gpu = data.controllers.map(x => x.model).join('\n')
-        res.send(info)
-        
-    }).catch(error => console.log(error))
-
+    if (info.gpu == "") {
+        info.gpu = (await gpuInfo.graphics()).controllers.map(x => x.model).join('\n')
+    }
+    res.send(info)
     // info.gpu = _Gpu.map(x => x.Name).join('\n')
 
 })
 
-app.listen(PORT, () => console.log('Server is now on http://localhost:' + PORT))
+app.listen(PORT,'127.0.0.1' ,() => console.log('Server is now on http://localhost:' + PORT))

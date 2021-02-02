@@ -17,6 +17,9 @@ const info = {
     uptime: "",
     gpu: ""
 }
+function tofixed(num: number) {
+    return num.toLocaleString(undefined, {minimumIntegerDigits: 2, useGrouping:false})
+}
 
 app.use(cors())
 
@@ -29,7 +32,7 @@ app.get('/', async (_, res) => {
     if (info.gpu == "") {
         info.gpu = (await gpuInfo.graphics()).controllers.map(x => x.model).join('\n')
     }
-    info.uptime = `${Math.floor(uptime / 3600)}:${Math.floor((uptime % 3600) / 60)}:${uptime % 60}`
+    info.uptime = `${tofixed(Math.floor(uptime / 3600))}:${tofixed(Math.floor((uptime % 3600) / 60))}:${tofixed(uptime % 60)}`
     res.send(info)
     // info.gpu = _Gpu.map(x => x.Name).join('\n')
 

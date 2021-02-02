@@ -14,7 +14,7 @@ const info = {
     platform: os.platform(),
     cpu: cpuName[0].model,
     ram: Math.floor(os.totalmem()),
-    uptime: Math.floor(os.uptime()/60),
+    uptime: "",
     gpu: ""
 }
 
@@ -25,9 +25,11 @@ app.get('/', async (_, res) => {
     //     info.gpu = _Gpu.map(x => x.Name).join('\n')
     //     res.send(info)
     // })
+    let uptime = os.uptime()
     if (info.gpu == "") {
         info.gpu = (await gpuInfo.graphics()).controllers.map(x => x.model).join('\n')
     }
+    info.uptime = `${Math.floor(uptime / 3600)}:${Math.floor((uptime % 3600) / 60)}:${uptime % 60}`
     res.send(info)
     // info.gpu = _Gpu.map(x => x.Name).join('\n')
 

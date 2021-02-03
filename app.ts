@@ -28,11 +28,10 @@ app.get('/', async (_, res) => {
     //     info.gpu = _Gpu.map(x => x.Name).join('\n')
     //     res.send(info)
     // })
-    let uptime = os.uptime()
     if (info.gpu == "") {
         info.gpu = (await gpuInfo.graphics()).controllers.map(x => x.model).join('\n')
     }
-    info.uptime = `${tofixed(Math.floor(uptime / 3600))}:${tofixed(Math.floor((uptime % 3600) / 60))}:${tofixed(uptime % 60)}`
+    info.uptime = os.uptime()
     res.send(info)
     // info.gpu = _Gpu.map(x => x.Name).join('\n')
 

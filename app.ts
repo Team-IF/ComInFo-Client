@@ -14,7 +14,7 @@ const info = {
     platform: os.platform(),
     cpu: cpuName[0].model,
     ram: Math.floor(os.totalmem()),
-    uptime: "",
+    uptime: 0,
     gpu: ""
 }
 function tofixed(num: number) {

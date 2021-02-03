@@ -17,9 +17,6 @@ const info = {
     uptime: 0,
     gpu: ""
 }
-function tofixed(num: number) {
-    return num.toLocaleString(undefined, {minimumIntegerDigits: 2, useGrouping:false})
-}
 
 app.use(cors())
 

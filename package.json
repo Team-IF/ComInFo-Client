@@ -7,7 +7,7 @@
   "author": "Team IF <postmaster@teamif.io>",
   "license": "AGPL-3.0-or-later",
   "scripts": {
-    "build": "tsc && pkg . --targets linux-x64,macos-x64,win-x86 --out-path dist",
+    "build": "tsc && pkg . --targets latest-linux-x64,latest-macos-x64,latest-win-x64 --out-path dist",
     "dev": "tsc && node ."
   },
   "dependencies": {
